@@ -1,4 +1,4 @@
-const baseurl = "https://uduscare-api-11dc38e09e4d.herokuapp.com/";
+const baseurl = "http://localhost:3333/";
 
 interface LoginData {
   email: string;
