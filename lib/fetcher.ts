@@ -1,4 +1,4 @@
-const baseurl = "https://uduscare-api-11dc38e09e4d.herokuapp.com/";
+const baseurl = "https://uduscare-api.onrender.com/";
 
 interface LoginData {
   email: string;

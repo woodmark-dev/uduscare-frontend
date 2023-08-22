@@ -14,7 +14,7 @@ export default function middleware(req: NextRequest) {
     ?.value.split(":")[2]
     .split(",")[0];
 
-  const url = req.nextUrl.clone();
+  const url = req.nextUrl.clone()
   const activePath = req.nextUrl.pathname;
 
   if (userPages.find((p) => p === activePath)) {
