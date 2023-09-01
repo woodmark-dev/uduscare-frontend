@@ -17,8 +17,13 @@ export default function Header({
   const { data } = useUser();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  function onLogout() {
-    deleteCookie("token");
+
+  const deleteCookiePromise = new Promise((res) => {
+    res(deleteCookie("token"));
+  });
+
+  async function onLogout() {
+    await deleteCookiePromise;
     router.push("/");
   }
 
