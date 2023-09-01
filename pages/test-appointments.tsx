@@ -22,9 +22,7 @@ export default function TestAppointments() {
         id: +textId,
       });
       mutate();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   function recordText(e: React.ChangeEvent<HTMLTextAreaElement>) {

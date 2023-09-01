@@ -22,9 +22,7 @@ export default function DoctorAppointment() {
         id: +textId,
       });
       mutate();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   async function prescribeDrug() {
@@ -34,9 +32,7 @@ export default function DoctorAppointment() {
         pharmacyDetail: text,
       });
       mutate();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   function recordText(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -50,9 +46,7 @@ export default function DoctorAppointment() {
         id: id,
       });
       mutate();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   return (

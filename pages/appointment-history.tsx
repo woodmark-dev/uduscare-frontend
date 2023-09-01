@@ -1,9 +1,7 @@
 import { useState } from "react";
 import AppointmentsWrapper from "@/components/appointmentsWrapper";
 import Appointment from "@/components/appointment";
-import { AppointmentProps } from "@/components/appointment";
 import { useAppointmentHistory } from "@/lib/hooks";
-import { fetcher } from "@/lib/fetcher";
 import Spinner from "@/components/spinner";
 import NavigationButton from "@/components/navigationButtons";
 
@@ -13,8 +11,6 @@ export default function AppointmentHistory() {
     arg: page,
   });
   const pageNos = Math.ceil(data?.message?.totalAppointments / 5) || 1;
-
-  console.log(data);
 
   return (
     <AppointmentsWrapper purpose="Appoinments History">
@@ -46,7 +42,7 @@ export default function AppointmentHistory() {
               markCompleted={() => {}}
             />
           ))}
-        {data?.message?.allAppointments.length === 0 && (
+        {data?.message?.allAppointments?.length === 0 && (
           <div>
             <h1>All Pending Appointments will appear here</h1>
           </div>

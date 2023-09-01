@@ -19,9 +19,7 @@ export default function PharmacyAppointments() {
         id: id,
       });
       mutate();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
   return (
     <AppointmentsWrapper purpose="Pharmacy Appointment">

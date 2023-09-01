@@ -22,7 +22,6 @@ export default function PendingAppointment() {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error);
     }
   }
 
@@ -58,7 +57,7 @@ export default function PendingAppointment() {
               markCompleted={() => {}}
             />
           ))}
-        {data?.message?.allAppointments.length === 0 && (
+        {data?.message?.allAppointments?.length === 0 && (
           <div>
             <h1>All Pending Appointments will appear here</h1>
           </div>

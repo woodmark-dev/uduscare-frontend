@@ -1,4 +1,6 @@
-const baseurl = "https://uduscare-api.onrender.com/";
+import { getCookie } from "cookies-next";
+
+const baseurl = "https://uduscare-api-11dc38e09e4d.herokuapp.com/";
 
 interface LoginData {
   email: string;
@@ -76,11 +78,13 @@ export type DataProps =
 
 export async function fetcher(url: string, data: DataProps = undefined) {
   try {
+    const token = getCookie('token')
     const res = await fetch(`${baseurl}${url}`, {
       method: data ? "POST" : "GET",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data),
     });

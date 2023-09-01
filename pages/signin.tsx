@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import { setCookie } from "cookies-next";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import Input from "../components/input";
@@ -45,6 +46,7 @@ export default function Signin() {
 
     setIsLoading(true);
     const { message, statusCode } = await fetcher("auth/login", state);
+    setCookie("token", message.access_token);
 
     if (statusCode !== 201) {
       setIsLoading(false);
@@ -52,22 +54,22 @@ export default function Signin() {
       return;
     }
 
-    if (message === "User") {
+    if (message.role === "User") {
       router.push("/home");
       return;
     }
 
-    if (message === "Doctor") {
+    if (message.role === "Doctor") {
       router.push("/doctor-appointments");
       return;
     }
 
-    if (message === "Test") {
+    if (message.role === "Test") {
       router.push("/test-appointments");
       return;
     }
 
-    if (message === "Pharmacy") {
+    if (message.role === "Pharmacy") {
       router.push("/pharmacy-appointments");
       return;
     }

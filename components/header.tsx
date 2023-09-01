@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { deleteCookie } from "cookies-next";
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import NextLink from "next/link";
-import { fetcher } from "@/lib/fetcher";
 import { useUser } from "@/lib/hooks";
+import { useRouter } from "next/router";
 
 export default function Header({
   navMenu,
@@ -14,11 +15,11 @@ export default function Header({
   action: { name: string; route: string };
 }) {
   const { data } = useUser();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  async function onLogout() {
-    setIsLoading(true);
-    await fetcher("auth/logout");
-    setIsLoading(false);
+  function onLogout() {
+    deleteCookie("token");
+    router.push("/");
   }
 
   const role = data?.message?.role;
